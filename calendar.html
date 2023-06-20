@@ -26,6 +26,7 @@
     margin:  0 auto;
     font-size: 14px;
 }
+	    
 table {
     border-collapse: collapse;
     table-layout: fixed;
@@ -42,6 +43,7 @@ table {
     color: #fff;
     font-size: 1.5em;
 }
+	    
 .year {
     font-size: 12px;
     font-weight: normal;
@@ -58,20 +60,13 @@ table {
 td,th {
     text-align: center;
     background-color: #fff; 
-    /*фон дней месяца */
+    /*фон дней месяца
+	td - ячейка таблицы
+	th - заглавные ячейки*/
 }
 	    
 th {
     padding: 10px;
-    /* background-color: #000000;
-    color: #fff; */
-    /* font-weight: normal; */
-    border-top: 1px solid rgba(0,0,0,0.1);
-    border-right: 1px solid rgba(0,0,0,0.1);
-    background-color: #9b59b6;
-    color: #fff;
-    text-shadow: 0px -1px 0px rgba(0,0,0,0.2);
-    font-weight: normal;	
 }
 
 td {
@@ -79,23 +74,28 @@ td {
     border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 td>span {
-   /* color: rgb(0, 0, 0); */
-	color: #555;
+   /* color: rgb(0, 0, 0); 
+    color: #555;
     padding: 10px;
     display: block;
     border: 2px solid transparent;
-    transition: border 0.3s ease;
+    transition: border 0.3s ease;*/
+	background: #000
 }
 
 
-td.avui>span {
+td.today>span {
     font-weight: bold;
     /*background-color: #000000 #996B46;*/
-	background-color: #E0BC9F;
+    background-color: #E0BC9F;
     color: #000;
+    /*сегодняшний день*/
 }
-td.fora > span {
+	    
+td.outside > span {
     opacity: 0.2;
+    /*??????*/
+    background: #0417B5;
 }
 
 
@@ -265,12 +265,12 @@ function calendar(widget, data)
             span.innerHTML = actual.getDate();
 
             if(actual.getMonth() !== data.getMonth())
-                cela.className = 'fora';
+                cela.className = 'outside';
 
             /* To highlight TODAY-date */
             if(data.getDate() == actual.getDate() &&
 	       data.getMonth() == actual.getMonth())
-		cela.className = 'avui';
+		cela.className = 'today';
 
 	    actual.setDate(actual.getDate()+1);
             fila.appendChild(cela);
