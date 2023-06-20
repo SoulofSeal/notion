@@ -83,7 +83,6 @@ td>span {
     /*дни ЭТОГО месяца*/
 }
 
-
 td.today>span {
     font-weight: bold;
     /*background-color: #000000 #996B46;*/
@@ -97,8 +96,12 @@ td.outside > span {
     /*дни НЕ этого месяца*/
 }
 
-
-.boto-next, .boto-prev {
+td > span:hover {
+    background: #d9c0ab;
+    color: #fff;
+}
+	    
+.button-next, .button-prev {
    /* background: #000; */
     background: #996B46;
     color: #fff;
@@ -115,8 +118,8 @@ td.outside > span {
     position: absolute;
     top: 15px;
 }
-.boto-next { right: 10px; padding-left: 13px; }
-.boto-prev { left: 10px; padding-right: 13px;}
+.button-next { right: 10px; padding-left: 13px; }
+.button-prev { left: 10px; padding-right: 13px;}
 
 
     </style>
@@ -204,26 +207,26 @@ function calendar(widget, data)
     titol.setAttribute('colspan', 7);
     titol.setAttribute('class','month');
 
-    var boto_prev = document.createElement('button');
-    boto_prev.className = 'boto-prev';
-    boto_prev.innerHTML = '&#9666;';
+    var button_prev = document.createElement('button');
+    button_prev.className = 'button-prev';
+    button_prev.innerHTML = '&#9666;';
 
-    var boto_next = document.createElement('button');
-    boto_next.className = 'boto-next';
-    boto_next.innerHTML = '&#9656;';
+    var button_next = document.createElement('button');
+    button_next.className = 'button-next';
+    button_next.innerHTML = '&#9656;';
 
-    titol.appendChild(boto_prev);
+    titol.appendChild(button_prev);
     titol.appendChild(document.createElement('span')).innerHTML = 
         months[data.getMonth()] + '<span class="year">' + data.getFullYear() + '</span>';
 
-    titol.appendChild(boto_next);
+    titol.appendChild(button_next);
 
-    boto_prev.onclick = function() {
+    button_prev.onclick = function() {
         data.setMonth(data.getMonth() - 1);
         calendar(widget, data);
     };
 
-    boto_next.onclick = function() {
+    button_next.onclick = function() {
         data.setMonth(data.getMonth() + 1);
         calendar(widget, data);
     };
