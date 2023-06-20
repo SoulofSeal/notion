@@ -21,7 +21,6 @@
     min-height: 100%;
 }
 
-
 #calendar {
     margin:  0 auto;
     font-size: 14px;
@@ -65,11 +64,38 @@ td,th {
 	td - ячейка таблицы
 	th - заглавные ячейки*/
 }
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+tr:first-child th {
+    font-size: 20px;
+    font-weight: bold;
+    border-left: none;
+    border-top: none;
+}
+td:last-child, th:last-child {
+  border-right: none;
+}
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 	    
 th {
     padding: 10px;
 }
 
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+th .any {
+    font-size: 12px;
+    font-weight: normal;
+    display: block;
+    text-shadow: none;
+    color: rgba(0,0,0,0.4);
+}
+tr:nth-child(2) th {
+    padding: 5px;
+}
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+	    
 td {
     padding: 0;
     border-bottom: 1px solid rgba(0,0,0,0.05);
@@ -84,6 +110,17 @@ td>span {
     /*дни ЭТОГО месяца*/
 }
 
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+td:nth-child(even)>span {
+    background-color: rgba(0,0,0,0.02);
+}
+td:last-child>span,
+td:nth-child(6)>span {
+    color: #c24b38;
+}
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+	    
 td.today>span {
     font-weight: bold;
     /*background-color: #996B46;*/
@@ -102,39 +139,6 @@ td > span:hover {
     background: #e6e0dc;
     color: #000;
 }
-
-
-	    
-/*tr:first-child th {
-    font-size: 20px;
-    font-weight: bold;
-    border-left: none;
-    border-top: none;
-}
-td:last-child, th:last-child {
-  border-right: none;
-} */
-	    
-th .any {
-    font-size: 12px;
-    font-weight: normal;
-    display: block;
-    text-shadow: none;
-    color: rgba(0,0,0,0.4);
-}
-	    
-/*tr:nth-child(2) th {
-    padding: 5px;
-} */
-	    
-td:nth-child(even)>span {
-    background-color: rgba(0,0,0,0.02);
-}
-td:last-child>span,
-td:nth-child(6)>span {
-    color: #c24b38;
-}
-
 	    
 .button-next, .button-prev {
    /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
