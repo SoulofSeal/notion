@@ -9,7 +9,7 @@
     <style>
         body {
     font-family: serif;
-      <!-- monospace; -->
+      /* тут можно поменять шрифт во всем календаре */
 
 }
 
@@ -63,8 +63,6 @@ th {
     color: #fff; */
     /* font-weight: normal; */
 }
-
-
 
 
 td {
@@ -232,7 +230,7 @@ function calendar(widget, data)
     fila.innerHTML += '<th class="day-header">' + days_abr[0] + '</th>';
     e.appendChild(fila);
 
-    /* Obtinc el dia que va acabar el mes anterior */
+    /* Получение дня, который закончился в прошлом месяце */
     var inici_mes =
         new Date(data.getFullYear(), data.getMonth(), -1).getDay();
 
@@ -240,10 +238,8 @@ function calendar(widget, data)
 			  data.getMonth(),
 			  -inici_mes);
 
-    /* 6 setmanes per cobrir totes les posiblitats
-     *  Quedaria mes consistent alhora de mostrar molts mesos 
-     *  en una quadricula */
-    for(var s = 0; s < 6; s++)
+    /* количество недель - строк в месяце */
+    for(var s = 0; s < 5; s++)
     {
         var fila = document.createElement('tr');
 
@@ -259,7 +255,7 @@ function calendar(widget, data)
             if(actual.getMonth() !== data.getMonth())
                 cela.className = 'fora';
 
-            /* Si es avui el decorem */
+            /* To highlight TODAY-date */
             if(data.getDate() == actual.getDate() &&
 	       data.getMonth() == actual.getMonth())
 		cela.className = 'avui';
