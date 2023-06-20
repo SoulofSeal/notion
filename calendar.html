@@ -102,6 +102,36 @@ td > span:hover {
     background: #e6e0dc;
     color: #000;
 }
+
+
+	    
+tr:first-child th {
+    font-size: 20px;
+    font-weight: bold;
+    border-left: none;
+    border-top: none;
+}
+td:last-child, th:last-child {
+  border-right: none;
+}
+th .any {
+    font-size: 12px;
+    font-weight: normal;
+    display: block;
+    text-shadow: none;
+    color: rgba(0,0,0,0.4);
+}
+tr:nth-child(2) th {
+    padding: 5px;
+}
+td:nth-child(even)>span {
+    background-color: rgba(0,0,0,0.02);
+}
+td:last-child>span,
+td:nth-child(6)>span {
+    color: #9b59b6;
+}
+
 	    
 .button-next, .button-prev {
    /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
@@ -175,9 +205,7 @@ Number.prototype.pad = function(num) {
 
 function calendar(widget, data)
 {
-
-    var original = widget.getElementsByClassName('actiu')[0];
-
+    var original = widget.getElementsByClassName('active')[0];
     if(typeof original === 'undefined')
     {
         original = document.createElement('table');
@@ -189,12 +217,10 @@ function calendar(widget, data)
     }
 
     var diff = data - new Date(original.getAttribute('data-actual'));
-
     diff = new Date(diff).getMonth();
-
     var e = document.createElement('table');
 
-    e.className = diff  === 0 ? 'amagat-esquerra' : 'amagat-dreta';
+    e.className = diff  === 0 ? 'hidden-left' : 'hidden-right';
     e.innerHTML = '';
 
     widget.appendChild(e);
@@ -261,40 +287,40 @@ function calendar(widget, data)
 
         for(var d = 1; d < 8; d++)
         {
-	    var cela = document.createElement('td');
+	    var cell = document.createElement('td');
 	    var span = document.createElement('span');
 
-	    cela.appendChild(span);
+	    cell.appendChild(span);
 
             span.innerHTML = actual.getDate();
 
             if(actual.getMonth() !== data.getMonth())
-                cela.className = 'outside';
+                cell.className = 'outside';
 
             /* To highlight TODAY-date */
             if(data.getDate() == actual.getDate() &&
 	       data.getMonth() == actual.getMonth())
-		cela.className = 'today';
+		cell.className = 'today';
 
 	    actual.setDate(actual.getDate()+1);
-            row.appendChild(cela);
+            row.appendChild(cell);
         }
 
         e.appendChild(row);
     }
 
     setTimeout(function() {
-        e.className = 'actiu';
+        e.className = 'active';
         original.className +=
-        diff === 0 ? ' amagat-dreta' : ' amagat-esquerra';
+        diff === 0 ? ' hidden-right' : ' hidden-left';
     }, 20);
 
-    original.className = 'inactiu';
+    original.className = 'inactive';
 
     setTimeout(function() {
-        var inactius = document.getElementsByClassName('inactiu');
-        for(var i = 0; i < inactius.length; i++)
-            widget.removeChild(inactius[i]);
+        var inactives = document.getElementsByClassName('inactive');
+        for(var i = 0; i < inactives.length; i++)
+            widget.removeChild(inactives[i]);
     }, 1000);
 
 }
